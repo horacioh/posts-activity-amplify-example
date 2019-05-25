@@ -1,0 +1,14 @@
+type Post @model {
+  id: ID!
+  title: String!
+  slug: String!
+  content: String!
+  createdAt: AWSDate!
+  actions: [PostAction] @connection(name: "PostActions")
+}
+type PostAction @model {
+  id: ID!
+  postId: ID!
+  createdAt: AWSDate
+  payload: Post @connection(name: "PostActions")
+}

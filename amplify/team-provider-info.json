@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "postsactivityamplify-20190525234721-authRole",
+            "UnauthRoleArn": "arn:aws:iam::115238827609:role/postsactivityamplify-20190525234721-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::115238827609:role/postsactivityamplify-20190525234721-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "postsactivityamplify-20190525234721-deployment",
+            "UnauthRoleName": "postsactivityamplify-20190525234721-unauthRole",
+            "StackName": "postsactivityamplify-20190525234721",
+            "StackId": "arn:aws:cloudformation:eu-west-1:115238827609:stack/postsactivityamplify-20190525234721/ad2d4ee0-7f36-11e9-8ab5-0254d350c81a"
+        }
+    }
+}

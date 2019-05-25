@@ -1,0 +1,30 @@
+.post-list {
+  margin: 24px 0;
+  padding: 0;
+}
+
+.post-item {
+  padding: 16px 0 24px 0;
+  margin-bottom: 24px;
+  list-style-type: none;
+}
+
+.post-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.post-item a:hover .post-item__title {
+  text-decoration: underline;
+}
+
+.post-item__title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.post-item__date {
+  font-size: 14px;
+  opacity: 0.6;
+  margin: 8px 0 16px 0;
+}

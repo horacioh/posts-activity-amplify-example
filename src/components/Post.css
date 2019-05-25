@@ -1,0 +1,20 @@
+.Post {
+  margin: 24px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.Post-container {
+  margin-bottom: 64px;
+  flex: 1;
+}
+
+.Post-actions {
+  flex: none;
+  width: 150px;
+  padding: 16px;
+}
+
+.Post__header {
+  margin-bottom: 24px;
+}
