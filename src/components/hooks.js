@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import * as API from "../api";
+// import * as API from "../api";
+import { API, graphqlOperation } from 'aws-amplify'
+import { listPosts } from '../graphql/queries'
 
-export const usePosts = (defaultData = null) => {
-  const [data, setData] = useState(defaultData);
+export const usePostsList = () => {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    API.fetchPosts().then(result => {
-      setData(result);
+    API.graphql(graphqlOperation(listPosts)).then((res) => {
+      setData(res.data);
       setLoading(false);
-    });
+    })
   }, []);
 
   return {
@@ -27,7 +29,7 @@ export const usePostById = id => {
       setPost(result);
       setLoading(false);
     });
-  }, []);
+  }, [id]);
 
   return {
     post,
@@ -44,7 +46,7 @@ export const usePostActions = id => {
       setActions(result.actions);
       setLoading(false);
     });
-  });
+  }, [id]);
 
   return {
     actions,

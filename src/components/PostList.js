@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./PostList.css";
-import { usePosts } from './hooks'
+import { usePostsList } from './hooks'
 
 export const PostList = () => {
-  const {data, loading} = usePosts();
+  const {data, loading} = usePostsList();
   return (
   <div>
     <Link to="/post/create">Create a post</Link>
     <ul className="post-list">
-      {!loading && data.allPosts.map(post => (
+      {!loading && data.listPosts.items.map(post => (
         <li key={post.id} className="post-item">
           <Link to={`post/${post.id}`}>
             <p className="post-item__title">{post.title}</p>

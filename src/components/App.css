@@ -12,3 +12,18 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.View {
+  margin: 24px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.View-container {
+  margin-bottom: 64px;
+  flex: 1;
+}
+
+.View__header {
+  margin-bottom: 24px;
+}

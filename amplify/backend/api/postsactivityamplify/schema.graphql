@@ -3,7 +3,7 @@ type Post @model {
   title: String!
   slug: String!
   content: String!
-  createdAt: AWSDate!
+  createdAt: String!
   actions: [PostAction] @connection(name: "PostActions")
 }
 type PostAction @model {
