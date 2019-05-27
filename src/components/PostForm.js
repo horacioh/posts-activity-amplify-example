@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./PostForm.css";
 import { API, graphqlOperation } from "aws-amplify";
-import { createPost } from "../graphql/mutations";
+import { createPost, createPostHistory } from "../graphql/mutations";
 
 export const PostForm = () => {
   const [title, setTitle] = useState("");
@@ -9,11 +9,27 @@ export const PostForm = () => {
   const [content, setContent] = useState("");
 
   const handleSubmit = async e => {
-    const input = { title, content, slug, createdAt: new Date() }
-    console.log(input);
     e.preventDefault();
-    const post = await API.graphql(graphqlOperation(createPost, { input }));
-    console.log(post);
+    const date = new Date();
+    const input = { title, content, slug };
+    const { data } = await API.graphql(graphqlOperation(createPost, { input }));
+    if (data.createPost.id) {
+      const postHistory = await API.graphql(
+        graphqlOperation(createPostHistory, {
+          input: {
+            postId: data.createPost.id,
+            creator: "horacio",
+            createdAt: date,
+            payload: {
+              title: data.createPost.title,
+              slug: data.createPost.slug,
+              content: data.createPost.content
+            }
+          }
+        })
+      );
+      console.log(postHistory);
+    }
   };
 
   return (

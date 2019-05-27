@@ -7,14 +7,16 @@ export const onCreatePost = `subscription OnCreatePost {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
+      id
+      postId
+      creator
+      createdAt
+      payload {
+        title
+        slug
+        content
       }
-      nextToken
     }
   }
 }
@@ -25,14 +27,16 @@ export const onUpdatePost = `subscription OnUpdatePost {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
+      id
+      postId
+      creator
+      createdAt
+      payload {
+        title
+        slug
+        content
       }
-      nextToken
     }
   }
 }
@@ -43,68 +47,58 @@ export const onDeletePost = `subscription OnDeletePost {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onCreatePostAction = `subscription OnCreatePostAction {
-  onCreatePostAction {
-    id
-    postId
-    createdAt
-    payload {
       id
-      title
-      slug
-      content
+      postId
+      creator
       createdAt
-      actions {
-        nextToken
+      payload {
+        title
+        slug
+        content
       }
     }
   }
 }
 `;
-export const onUpdatePostAction = `subscription OnUpdatePostAction {
-  onUpdatePostAction {
+export const onCreatePostHistory = `subscription OnCreatePostHistory {
+  onCreatePostHistory {
     id
     postId
+    creator
     createdAt
     payload {
-      id
       title
       slug
       content
-      createdAt
-      actions {
-        nextToken
-      }
     }
   }
 }
 `;
-export const onDeletePostAction = `subscription OnDeletePostAction {
-  onDeletePostAction {
+export const onUpdatePostHistory = `subscription OnUpdatePostHistory {
+  onUpdatePostHistory {
     id
     postId
+    creator
     createdAt
     payload {
-      id
       title
       slug
       content
-      createdAt
-      actions {
-        nextToken
-      }
+    }
+  }
+}
+`;
+export const onDeletePostHistory = `subscription OnDeletePostHistory {
+  onDeletePostHistory {
+    id
+    postId
+    creator
+    createdAt
+    payload {
+      title
+      slug
+      content
     }
   }
 }

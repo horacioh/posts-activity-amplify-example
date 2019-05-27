@@ -7,14 +7,16 @@ export const createPost = `mutation CreatePost($input: CreatePostInput!) {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
+      id
+      postId
+      creator
+      createdAt
+      payload {
+        title
+        slug
+        content
       }
-      nextToken
     }
   }
 }
@@ -25,14 +27,16 @@ export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
+      id
+      postId
+      creator
+      createdAt
+      payload {
+        title
+        slug
+        content
       }
-      nextToken
     }
   }
 }
@@ -43,68 +47,58 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const createPostAction = `mutation CreatePostAction($input: CreatePostActionInput!) {
-  createPostAction(input: $input) {
-    id
-    postId
-    createdAt
-    payload {
       id
-      title
-      slug
-      content
+      postId
+      creator
       createdAt
-      actions {
-        nextToken
+      payload {
+        title
+        slug
+        content
       }
     }
   }
 }
 `;
-export const updatePostAction = `mutation UpdatePostAction($input: UpdatePostActionInput!) {
-  updatePostAction(input: $input) {
+export const createPostHistory = `mutation CreatePostHistory($input: CreatePostHistoryInput!) {
+  createPostHistory(input: $input) {
     id
     postId
+    creator
     createdAt
     payload {
-      id
       title
       slug
       content
-      createdAt
-      actions {
-        nextToken
-      }
     }
   }
 }
 `;
-export const deletePostAction = `mutation DeletePostAction($input: DeletePostActionInput!) {
-  deletePostAction(input: $input) {
+export const updatePostHistory = `mutation UpdatePostHistory($input: UpdatePostHistoryInput!) {
+  updatePostHistory(input: $input) {
     id
     postId
+    creator
     createdAt
     payload {
-      id
       title
       slug
       content
-      createdAt
-      actions {
-        nextToken
-      }
+    }
+  }
+}
+`;
+export const deletePostHistory = `mutation DeletePostHistory($input: DeletePostHistoryInput!) {
+  deletePostHistory(input: $input) {
+    id
+    postId
+    creator
+    createdAt
+    payload {
+      title
+      slug
+      content
     }
   }
 }

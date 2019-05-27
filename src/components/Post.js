@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Post.css";
-import { usePostById, usePostActions } from "./hooks";
+import { usePost } from "./hooks";
 
 export const Post = ({ match }) => {
   const postId = match.params.id;
-  const { loading: postLoading, post } = usePostById(postId);
-  const { loading: actionsLoading, actions } = usePostActions(postId);
+  console.log(postId);
+  const { loading, post } = usePost(postId);
+  const actions = [];
   return (
     <section className="View">
       <div className="View-container">
-        {postLoading ? (
+        {loading ? (
           <p>Loading...</p>
         ) : (
           <>
@@ -30,7 +31,7 @@ export const Post = ({ match }) => {
         </div>
         <div className="View__content">
           <ul className="Post-actions__list">
-            {actionsLoading ? (
+            {true ? (
               <p>Loading...</p>
             ) : (
               actions.map(action => (

@@ -3,12 +3,18 @@ type Post @model {
   title: String!
   slug: String!
   content: String!
-  createdAt: String!
-  actions: [PostAction] @connection(name: "PostActions")
+  actions: [PostHistory]
 }
-type PostAction @model {
+type PostHistory @model {
   id: ID!
   postId: ID!
-  createdAt: AWSDate
-  payload: Post @connection(name: "PostActions")
+  creator: String!
+  createdAt: String
+  payload: HistoryPayload
+}
+
+type HistoryPayload {
+  title: String
+  slug: String
+  content: String
 }

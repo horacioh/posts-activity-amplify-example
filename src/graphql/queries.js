@@ -7,14 +7,16 @@ export const getPost = `query GetPost($id: ID!) {
     title
     slug
     content
-    createdAt
     actions {
-      items {
-        id
-        postId
-        createdAt
+      id
+      postId
+      creator
+      createdAt
+      payload {
+        title
+        slug
+        content
       }
-      nextToken
     }
   }
 }
@@ -30,49 +32,46 @@ export const listPosts = `query ListPosts(
       title
       slug
       content
-      createdAt
       actions {
-        nextToken
+        id
+        postId
+        creator
+        createdAt
       }
     }
     nextToken
   }
 }
 `;
-export const getPostAction = `query GetPostAction($id: ID!) {
-  getPostAction(id: $id) {
+export const getPostHistory = `query GetPostHistory($id: ID!) {
+  getPostHistory(id: $id) {
     id
     postId
+    creator
     createdAt
     payload {
-      id
       title
       slug
       content
-      createdAt
-      actions {
-        nextToken
-      }
     }
   }
 }
 `;
-export const listPostActions = `query ListPostActions(
-  $filter: ModelPostActionFilterInput
+export const listPostHistorys = `query ListPostHistorys(
+  $filter: ModelPostHistoryFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listPostActions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listPostHistorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       postId
+      creator
       createdAt
       payload {
-        id
         title
         slug
         content
-        createdAt
       }
     }
     nextToken
