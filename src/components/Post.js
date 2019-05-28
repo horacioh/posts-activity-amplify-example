@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Post.css";
-import { usePost } from "./hooks";
+import { usePost, usePostHistory } from "./hooks";
+import { PostHistory } from "./PostHistory";
 
 export const Post = ({ match }) => {
   const postId = match.params.id;
-  console.log(postId);
   const { loading, post } = usePost(postId);
-  const actions = [];
+  console.log({ loading, post, postId});
   return (
     <section className="View">
       <div className="View-container">
-        {loading ? (
+        {loading ? ( 
           <p>Loading...</p>
         ) : (
           <>
@@ -25,26 +25,7 @@ export const Post = ({ match }) => {
           </>
         )}
       </div>
-      <div className="Post-actions">
-        <div className="View__header">
-          <h4 className="View_title">Post Activity</h4>
-        </div>
-        <div className="View__content">
-          <ul className="Post-actions__list">
-            {true ? (
-              <p>Loading...</p>
-            ) : (
-              actions.map(action => (
-                <li key={action.id}>
-                  <p>
-                    {action.createdAt}: updated by {action.creator.username}
-                  </p>
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
-      </div>
+      <PostHistory postId={postId} />
     </section>
   );
 };

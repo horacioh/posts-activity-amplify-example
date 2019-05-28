@@ -5,12 +5,19 @@ type Post @model {
   content: String!
   actions: [PostHistory]
 }
-type PostHistory @model {
+type PostHistory @model @searchable {
   id: ID!
   postId: ID!
   creator: String!
   createdAt: String
+  action: PostAction
   payload: HistoryPayload
+}
+
+enum PostAction {
+  CREATED
+  UPDATED
+  DELETED
 }
 
 type HistoryPayload {

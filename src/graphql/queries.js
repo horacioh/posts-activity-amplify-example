@@ -12,6 +12,7 @@ export const getPost = `query GetPost($id: ID!) {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -37,6 +38,7 @@ export const listPosts = `query ListPosts(
         postId
         creator
         createdAt
+        action
       }
     }
     nextToken
@@ -49,6 +51,7 @@ export const getPostHistory = `query GetPostHistory($id: ID!) {
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug
@@ -68,6 +71,35 @@ export const listPostHistorys = `query ListPostHistorys(
       postId
       creator
       createdAt
+      action
+      payload {
+        title
+        slug
+        content
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const searchPostHistorys = `query SearchPostHistorys(
+  $filter: SearchablePostHistoryFilterInput
+  $sort: SearchablePostHistorySortInput
+  $limit: Int
+  $nextToken: Int
+) {
+  searchPostHistorys(
+    filter: $filter
+    sort: $sort
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      postId
+      creator
+      createdAt
+      action
       payload {
         title
         slug

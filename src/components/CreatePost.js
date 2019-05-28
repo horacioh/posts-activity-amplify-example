@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./PostForm.css";
 import { API, graphqlOperation } from "aws-amplify";
-import { createPost, createPostHistory } from "../graphql/mutations";
+import {
+  createPost,
+  createPostHistory,
+  updatePost
+} from "../graphql/mutations";
 
-export const PostForm = () => {
+export const CreatePost = ({ match, history }) => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [content, setContent] = useState("");
@@ -12,6 +16,7 @@ export const PostForm = () => {
     e.preventDefault();
     const date = new Date();
     const input = { title, content, slug };
+
     const { data } = await API.graphql(graphqlOperation(createPost, { input }));
     if (data.createPost.id) {
       const postHistory = await API.graphql(
@@ -20,6 +25,7 @@ export const PostForm = () => {
             postId: data.createPost.id,
             creator: "horacio",
             createdAt: date,
+            action: "CREATED",
             payload: {
               title: data.createPost.title,
               slug: data.createPost.slug,
@@ -28,7 +34,7 @@ export const PostForm = () => {
           }
         })
       );
-      console.log(postHistory);
+      history.push(`/post/${data.createPost.id}`);
     }
   };
 

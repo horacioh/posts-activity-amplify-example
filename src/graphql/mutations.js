@@ -12,6 +12,7 @@ export const createPost = `mutation CreatePost($input: CreatePostInput!) {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -32,6 +33,7 @@ export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -52,6 +54,7 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -67,6 +70,7 @@ export const createPostHistory = `mutation CreatePostHistory($input: CreatePostH
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug
@@ -81,6 +85,7 @@ export const updatePostHistory = `mutation UpdatePostHistory($input: UpdatePostH
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug
@@ -95,6 +100,7 @@ export const deletePostHistory = `mutation DeletePostHistory($input: DeletePostH
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug

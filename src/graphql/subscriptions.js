@@ -12,6 +12,7 @@ export const onCreatePost = `subscription OnCreatePost {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -32,6 +33,7 @@ export const onUpdatePost = `subscription OnUpdatePost {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -52,6 +54,7 @@ export const onDeletePost = `subscription OnDeletePost {
       postId
       creator
       createdAt
+      action
       payload {
         title
         slug
@@ -67,6 +70,7 @@ export const onCreatePostHistory = `subscription OnCreatePostHistory {
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug
@@ -81,6 +85,7 @@ export const onUpdatePostHistory = `subscription OnUpdatePostHistory {
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug
@@ -95,6 +100,7 @@ export const onDeletePostHistory = `subscription OnDeletePostHistory {
     postId
     creator
     createdAt
+    action
     payload {
       title
       slug
