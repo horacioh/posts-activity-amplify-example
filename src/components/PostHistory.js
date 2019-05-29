@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
+import moment from "moment";
 import "./PostHistory.css";
 import { usePostHistory } from "./hooks";
 
@@ -6,7 +7,6 @@ export const Icon = () => null;
 
 export const PostHistory = ({ postId }) => {
   const { loading, postHistory } = usePostHistory(postId);
-  console.log({ loading, postHistory });
   return (
     <div className="Post-actions">
       <div className="View__header">
@@ -17,19 +17,22 @@ export const PostHistory = ({ postId }) => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            postHistory.map(item => (
-              <li className="Post-actions__item" key={item.id}>
-                <Icon action={item.action} />
-                <div>
-                  <p>
-                    {`${item.creator} has ${item.action} on ${item.createdAt}`}
-                  </p>
-                </div>
-              </li>
-            ))
+            postHistory.map(item => <HistoryItem item={item} />)
           )}
         </ul>
       </div>
     </div>
+  );
+};
+
+export const HistoryItem = ({ item }) => {
+  const date = useMemo(() => moment(item.createdAt).fromNow(), [item]);
+  return (
+    <li className="Post-actions__item" key={item.id}>
+      <Icon action={item.action} />
+      <div>
+        <p>{`${item.action} by ${item.creator} ${date}`}</p>
+      </div>
+    </li>
   );
 };

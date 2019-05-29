@@ -1,8 +1,36 @@
 .Field {
   padding: 8px;
+  margin-bottom: 16px;
 }
 
 .Field label {
   display: block;
   margin-bottom: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.Field input,
+.Field textarea {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  max-width: 420px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.Field button {
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Field button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
