@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Post, CreatePost, PostList, UpdatePost } from "./index";
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1 className="App-header__title">Store Posts History example</h1>
+          <Link to="/">go home
+          </Link>
         </header>
           <Switch>
             <Route path="/" exact component={PostList} />

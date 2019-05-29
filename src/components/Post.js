@@ -11,13 +11,13 @@ export const Post = ({ match }) => {
   return (
     <section className="View">
       <div className="View-container">
-        {loading ? ( 
+        {loading ? (
           <p>Loading...</p>
         ) : (
           <>
             <div className="View__header">
-              <Link to={`/post/edit/${postId}`}>Edit this post</Link>
               <h1 className="View__title">{post.title}</h1>
+              <Link to={`/post/edit/${postId}`}>Edit this post</Link>
             </div>
             <div className="View__content">
               <p>{post.content}</p>

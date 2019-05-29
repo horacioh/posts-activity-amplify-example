@@ -8,12 +8,12 @@ export const Icon = () => null;
 export const PostHistory = ({ postId }) => {
   const { loading, postHistory } = usePostHistory(postId);
   return (
-    <div className="Post-actions">
+    <div className="Post-sidebar">
       <div className="View__header">
         <h4 className="View_title">Post Activity</h4>
       </div>
       <div className="View__content">
-        <ul className="Post-actions__list">
+        <ul className="Post-history__list">
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -28,7 +28,7 @@ export const PostHistory = ({ postId }) => {
 export const HistoryItem = ({ item }) => {
   const date = useMemo(() => moment(item.createdAt).fromNow(), [item]);
   return (
-    <li className="Post-actions__item" key={item.id}>
+    <li className="Post-history__item" key={item.id}>
       <Icon action={item.action} />
       <div>
         <p>{`${item.action} by ${item.creator} ${date}`}</p>

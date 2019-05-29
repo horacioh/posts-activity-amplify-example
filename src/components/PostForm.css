@@ -14,7 +14,7 @@
 .Field textarea {
   display: block;
   width: 100%;
-  padding: 8px 16px;
+  padding: 8px;
   max-width: 420px;
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 4px;
