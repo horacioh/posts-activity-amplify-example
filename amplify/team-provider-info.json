@@ -9,6 +9,11 @@
             "UnauthRoleName": "postsactivityamplify-20190527014956-unauthRole",
             "StackName": "postsactivityamplify-20190527014956",
             "StackId": "arn:aws:cloudformation:eu-west-1:115238827609:stack/postsactivityamplify-20190527014956/f7433640-8010-11e9-8c05-0663408f5242"
+        },
+        "categories": {
+            "auth": {
+                "postsactivityamplify5c5f29e3": {}
+            }
         }
     }
 }

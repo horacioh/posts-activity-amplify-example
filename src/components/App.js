@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { withAuthenticator } from 'aws-amplify-react';
 import { Post, CreatePost, PostList, UpdatePost } from "./index";
 
 function App() {
@@ -23,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App, true);
